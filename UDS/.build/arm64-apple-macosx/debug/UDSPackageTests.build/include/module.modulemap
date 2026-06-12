@@ -1,0 +1,3 @@
+module UDSPackageTests {
+    header "/Volumes/Projects/OpenNOW-Mac/UDS/.build/arm64-apple-macosx/debug/UDSPackageTests.build/include/UDSPackageTests-Swift.h"
+}

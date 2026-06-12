@@ -1,0 +1,3 @@
+module CloudMatch {
+    header "/Volumes/Projects/OpenNOW-Mac/CloudMatch/.build/arm64-apple-macosx/debug/CloudMatch.build/include/CloudMatch-Swift.h"
+}

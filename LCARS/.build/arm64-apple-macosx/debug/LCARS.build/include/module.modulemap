@@ -1,0 +1,3 @@
+module LCARS {
+    header "/Volumes/Projects/OpenNOW-Mac/LCARS/.build/arm64-apple-macosx/debug/LCARS.build/include/LCARS-Swift.h"
+}

@@ -1,0 +1,3 @@
+module NetworkTest {
+    header "/Volumes/Projects/OpenNOW-Mac/NetworkTest/.build/arm64-apple-macosx/debug/NetworkTest.build/include/NetworkTest-Swift.h"
+}
