@@ -116,6 +116,7 @@ public enum SteamControllerReport {
         static let dpadLeft: UInt8 = 0x04
         static let dpadDown: UInt8 = 0x08
         static let select: UInt8 = 0x10
+        static let steam: UInt8 = 0x20
         static let start: UInt8 = 0x40
 
         static let rightPadClick: UInt8 = 0x04
@@ -130,6 +131,7 @@ public enum SteamControllerReport {
         static let east: UInt32 = 0x0000_0002
         static let west: UInt32 = 0x0000_0004
         static let north: UInt32 = 0x0000_0008
+        static let quickAccess: UInt32 = 0x0000_0010
         static let rightStick: UInt32 = 0x0000_0020
         static let start: UInt32 = 0x0000_0040
         static let rightShoulder: UInt32 = 0x0000_0200
@@ -139,6 +141,7 @@ public enum SteamControllerReport {
         static let dpadUp: UInt32 = 0x0000_2000
         static let select: UInt32 = 0x0000_4000
         static let leftStick: UInt32 = 0x0000_8000
+        static let steam: UInt32 = 0x0001_0000
         static let leftShoulder: UInt32 = 0x0008_0000
         static let leftGrip: UInt32 = 0x0002_0000
         static let rightGrip: UInt32 = 0x0000_0080
@@ -172,6 +175,7 @@ public enum SteamControllerReport {
         static let rightStick: UInt64 = 1 << 26
         static let leftGrip: UInt64 = 1 << 41
         static let rightGrip: UInt64 = 1 << 42
+        static let quickAccess: UInt64 = 1 << 50
     }
 
     public static func parse(_ report: [UInt8], previous: SteamControllerInputSnapshot, model: SteamControllerModel) -> SteamControllerReportEvent {
@@ -303,6 +307,7 @@ public enum SteamControllerReport {
         if midBits & LegacyButtonMask.dpadLeft != 0 { buttons.insert(.dpadLeft) }
         if midBits & LegacyButtonMask.dpadDown != 0 { buttons.insert(.dpadDown) }
         if midBits & LegacyButtonMask.select != 0 { buttons.insert(.select) }
+        if midBits & LegacyButtonMask.steam != 0 { buttons.insert(.mode) }
         if midBits & LegacyButtonMask.start != 0 { buttons.insert(.start) }
         if lowBits & LegacyButtonMask.stickClick != 0 { buttons.insert(.leftStick) }
         if lowBits & LegacyButtonMask.rightPadClick != 0 { buttons.insert(.rightStick) }
@@ -329,6 +334,8 @@ public enum SteamControllerReport {
         if bits & TritonButtonMask.rightGrip != 0 { buttons.insert(.rightGrip) }
         if bits & TritonButtonMask.leftGrip2 != 0 { buttons.insert(.leftGrip2) }
         if bits & TritonButtonMask.rightGrip2 != 0 { buttons.insert(.rightGrip2) }
+        if bits & TritonButtonMask.steam != 0 { buttons.insert(.mode) }
+        if bits & TritonButtonMask.quickAccess != 0 { buttons.insert(.quickAccess) }
         return buttons
     }
 
@@ -365,6 +372,8 @@ public enum SteamControllerReport {
         if bits & DeckStateButtonMask.rightGrip != 0 { buttons.insert(.rightGrip) }
         if bits & DeckStateButtonMask.leftGrip2 != 0 { buttons.insert(.leftGrip2) }
         if bits & DeckStateButtonMask.rightGrip2 != 0 { buttons.insert(.rightGrip2) }
+        if bits & DeckStateButtonMask.mode != 0 { buttons.insert(.mode) }
+        if bits & DeckStateButtonMask.quickAccess != 0 { buttons.insert(.quickAccess) }
         return buttons
     }
 

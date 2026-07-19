@@ -80,6 +80,12 @@ private func parsedState(_ report: [UInt8], previous: SteamControllerInputSnapsh
         #expect(snapshot.buttons.contains(.rightStick))
     }
 
+    @Test func mapsSteamButton() {
+        let snapshot = parsedState(inputReport(buttons: (0, 0b0010_0000, 0)))
+        #expect(snapshot.buttons.contains(.mode))
+        #expect(parsedState(inputReport()).buttons.contains(.mode) == false)
+    }
+
     @Test func mapsAnalogTriggers() {
         let snapshot = parsedState(inputReport(leftTrigger: 255, rightTrigger: 128))
         #expect(snapshot.leftTrigger == 1.0)
@@ -196,6 +202,16 @@ private func tritonReport(reportID: UInt8 = 0x42,
         #expect(parsedState(tritonReport(buttons: 0x0000_0100), model: .triton).buttons.contains(.rightGrip2))
     }
 
+    @Test func mapsSteamAndQuickAccessButtons() {
+        let snapshot = parsedState(tritonReport(buttons: 0x0001_0010), model: .triton)
+        #expect(snapshot.buttons.contains(.mode))
+        #expect(snapshot.buttons.contains(.quickAccess))
+
+        let steamOnly = parsedState(tritonReport(buttons: 0x0001_0000), model: .triton)
+        #expect(steamOnly.buttons.contains(.mode))
+        #expect(steamOnly.buttons.contains(.quickAccess) == false)
+    }
+
     @Test func mapsDpadMenuAndStickClicks() {
         let snapshot = parsedState(tritonReport(buttons: 0x0000_fc60), model: .triton)
         #expect(snapshot.buttons.contains(.dpadDown))
@@ -306,6 +322,13 @@ private func parsedDeckState(_ report: [UInt8]) -> SteamControllerInputSnapshot 
         #expect(snapshot.buttons.contains(.rightGrip))
         #expect(snapshot.buttons.contains(.leftGrip2))
         #expect(snapshot.buttons.contains(.rightGrip2))
+    }
+
+    @Test func mapsSteamAndQuickAccessButtons() {
+        let snapshot = parsedDeckState(deckStateReport(buttons: (1 << 13) | (1 << 50)))
+        #expect(snapshot.buttons.contains(.mode))
+        #expect(snapshot.buttons.contains(.quickAccess))
+        #expect(parsedDeckState(deckStateReport()).buttons.contains(.mode) == false)
     }
 
     @Test func mapsDpadMenuAndStickClicks() {
