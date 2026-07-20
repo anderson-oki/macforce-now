@@ -106,7 +106,7 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7729CE752FDEDAB300D5C9D5 /* MacForce Now */ = {
+		7729CE752FDEDAB300D5C9D5 /* MacForceNow */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7729CE832FDEDAB500D5C9D5 /* Build configuration list for PBXNativeTarget "MacForceNow" */;
 			buildPhases = (
@@ -166,7 +166,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7729CE752FDEDAB300D5C9D5 /* MacForce Now */,
+				7729CE752FDEDAB300D5C9D5 /* MacForceNow */,
 			);
 		};
 /* End PBXProject section */
@@ -347,8 +347,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.necorico.macforce-now;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.necorico.macforce-now";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -388,8 +388,8 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 15.6;
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.necorico.macforce-now;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.necorico.macforce-now";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
