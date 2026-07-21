@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/anderson-oki/macforce-now/compare/v0.2.0...v0.2.1) (2026-07-21)
+
+
+### Bug Fixes
+
+* sync marketing version to 0.2.0 and pin xcode updater ([10c01e1](https://github.com/anderson-oki/macforce-now/commit/10c01e18ede7bb5148123f437ad47f7e145ea6ba))
+
 ## [0.2.0](https://github.com/anderson-oki/macforce-now/compare/v0.1.0...v0.2.0) (2026-07-21)
 
 
